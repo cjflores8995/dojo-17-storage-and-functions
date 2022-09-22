@@ -6,11 +6,8 @@ namespace BlobQuickstartV12.BusinessLayer
     {
 
         (string, string) CreateTxtFile(string fileName = null);
-        bool DeleteAllDataFiles();
-
-        //bool DeleteSpecificFile(string fileName);
 
         (string, List<string>) ListAllFiles();
-        void CreateDataDirectory();
+        void CreateUploadDirectory();
     }
 }

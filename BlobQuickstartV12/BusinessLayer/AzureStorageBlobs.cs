@@ -15,6 +15,9 @@ namespace BlobQuickstartV12.BusinessLayer
         private readonly Startup Startup;
         private readonly string DownloadPath;
 
+        /// <summary>
+        /// Metodo constructor
+        /// </summary>
         public AzureStorageBlobs()
         {
             Startup = new Startup();
@@ -48,6 +51,12 @@ namespace BlobQuickstartV12.BusinessLayer
             return containerClient;
         }
 
+        /// <summary>
+        /// Sube un archivo especifico a un contenedor
+        /// </summary>
+        /// <param name="containerClient"></param>
+        /// <param name="fileName"></param>
+        /// <param name="localFilePath"></param>
         public void UploadBlobToContainer(BlobContainerClient containerClient, string fileName, string localFilePath)
         {
             BlobClient blobClient = containerClient.GetBlobClient(fileName);
@@ -68,7 +77,7 @@ namespace BlobQuickstartV12.BusinessLayer
         }
 
         /// <summary>
-        /// Upload all files of "data" folder to Azure blob storage
+        /// Sube todos los archivos a un contenedor
         /// </summary>
         /// <param name="containerClient"></param>
         public void UploadAllBlobsToContainer(BlobContainerClient containerClient)
@@ -108,6 +117,11 @@ namespace BlobQuickstartV12.BusinessLayer
             Console.WriteLine(Environment.NewLine);
         }
 
+        /// <summary>
+        /// Obtiene los archivos de un contenedor y devuelve una lista de strings
+        /// </summary>
+        /// <param name="containerClient">objeto de la clase BlobContainerClient</param>
+        /// <returns></returns>
         private List<string> ListBlobsContainer(BlobContainerClient containerClient)
         {
             List<string> listBlobs = new List<string>();
@@ -121,7 +135,7 @@ namespace BlobQuickstartV12.BusinessLayer
         }
 
         /// <summary>
-        /// Descarga los blobs de un contenedor específico
+        /// Descarga los blobs de un contenedor específico en la ruta "files/download"
         /// </summary>
         /// <param name="containerClient"></param>
         public void DownloadAllBlobsOfContainer(BlobContainerClient containerClient)

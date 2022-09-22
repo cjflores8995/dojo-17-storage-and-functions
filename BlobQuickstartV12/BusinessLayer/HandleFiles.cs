@@ -20,13 +20,13 @@ namespace BlobQuickstartV12.BusinessLayer
         }
 
         /// <summary>
-        /// Create a simple text file and put it inside of folder "data"
+        /// Crea un archivo de texto con informacion aleatorea y lo copia en "files/upload"
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
         public  (string, string) CreateTxtFile(string fileName = null)
         {
-            this.CreateDataDirectory();
+            this.CreateUploadDirectory();
 
             if(fileName == null)
             {
@@ -44,11 +44,10 @@ namespace BlobQuickstartV12.BusinessLayer
             return  (fileName, localFilePath);
         }
 
-        public bool DeleteAllDataFiles()
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Obtiene el listado de archivos de "files/upload" ademas de su ruta principal
+        /// </summary>
+        /// <returns></returns>
         public (string, List<string>) ListAllFiles()
         {
             List<string> fileNames = new();
@@ -64,7 +63,10 @@ namespace BlobQuickstartV12.BusinessLayer
             return (LocalPath, fileNames);
         }
 
-        public void CreateDataDirectory()
+        /// <summary>
+        /// Crea el directorio upload
+        /// </summary>
+        public void CreateUploadDirectory()
         {
             if (!Directory.Exists(LocalPath))
             {
