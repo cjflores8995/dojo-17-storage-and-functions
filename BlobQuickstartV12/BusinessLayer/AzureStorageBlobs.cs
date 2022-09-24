@@ -140,6 +140,9 @@ namespace BlobQuickstartV12.BusinessLayer
         /// <param name="containerClient"></param>
         public void DownloadAllBlobsOfContainer(BlobContainerClient containerClient)
         {
+            if (!Directory.Exists(DownloadPath))
+                Directory.CreateDirectory(DownloadPath);
+
             foreach(var blobItem in containerClient.GetBlobs())
             {
                 BlobClient blobClient = containerClient.GetBlobClient(blobItem.Name);
